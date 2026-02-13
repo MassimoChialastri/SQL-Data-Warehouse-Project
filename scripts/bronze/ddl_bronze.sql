@@ -14,11 +14,11 @@ IF OBJECT_ID('bronze.customers', 'U') IS NOT NULL
 GO
 
 CREATE TABLE bronze.customers (
-	customer_id nvarchar(50),
-	customer_unique_id nvarchar(50),
-	customer_zip_code_prefix int,
+	customer_id nvarchar(32),
+	customer_unique_id nvarchar(32),
+	customer_zip_code_prefix nvarchar(5),
 	customer_city nvarchar(50),
-	customer_state nvarchar(50)
+	customer_state nvarchar(2)
 );
 GO
 
@@ -27,11 +27,11 @@ IF OBJECT_ID('bronze.geolocation', 'U') IS NOT NULL
 GO
 
 CREATE TABLE bronze.geolocation (
-	geolocation_zip_code_prefix int,
+	geolocation_zip_code_prefix nvarchar(5),
 	geolocation_lat float,
 	geolocation_lng float,
 	geolocation_city nvarchar(50),
-	geolocation_state nvarchar(50)
+	geolocation_state nvarchar(2)
 );
 GO
 
@@ -40,10 +40,10 @@ IF OBJECT_ID('bronze.order_items', 'U') IS NOT NULL
 GO
 
 CREATE TABLE bronze.order_items (
-    order_id nvarchar(50),
+    order_id nvarchar(32),
 	order_item_id tinyint,
-	product_id nvarchar(50),
-	seller_id nvarchar(50),
+	product_id nvarchar(32),
+	seller_id nvarchar(32),
 	shipping_limit_date datetime2(7),
 	price float,
 	freight_value float
@@ -55,7 +55,7 @@ IF OBJECT_ID('bronze.order_payments', 'U') IS NOT NULL
 GO
 
 CREATE TABLE bronze.order_payments (
-	order_id nvarchar(50),
+	order_id nvarchar(32),
 	payment_sequential tinyint,
 	payment_type nvarchar(50),
 	payment_installments tinyint,
@@ -68,8 +68,8 @@ IF OBJECT_ID('bronze.order_reviews', 'U') IS NOT NULL
 GO
 
 CREATE TABLE bronze.order_reviews (
-	review_id nvarchar(50),
-	order_id nvarchar(50),
+	review_id nvarchar(32),
+	order_id nvarchar(32),
 	review_score tinyint,
 	review_comment_title nvarchar(50),
 	review_comment_message nvarchar(max),
@@ -83,8 +83,8 @@ IF OBJECT_ID('bronze.orders', 'U') IS NOT NULL
 GO
 
 CREATE TABLE bronze.orders (
-	order_id nvarchar(50),
-	customer_id nvarchar(50),
+	order_id nvarchar(32),
+	customer_id nvarchar(32),
 	order_status nvarchar(50),
 	order_purchase_timestamp datetime2(7),
 	order_approved_at datetime2(7),
@@ -109,7 +109,7 @@ IF OBJECT_ID('bronze.products', 'U') IS NOT NULL
 GO
 
 CREATE TABLE bronze.products (
-	product_id nvarchar(50),
+	product_id nvarchar(32),
 	product_category_name nvarchar(50),
 	product_name_lenght tinyint,
 	product_description_lenght smallint,
@@ -126,9 +126,9 @@ IF OBJECT_ID('bronze.sellers', 'U') IS NOT NULL
 GO
 
 CREATE TABLE bronze.sellers (
-	seller_id nvarchar(50),
-	seller_zip_code_prefix int,
+	seller_id nvarchar(32),
+	seller_zip_code_prefix nvarchar(5),
 	seller_city nvarchar(50),
-	seller_state nvarchar(50)
+	seller_state nvarchar(2)
 );
 GO
