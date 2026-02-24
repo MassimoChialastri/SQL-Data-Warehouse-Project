@@ -189,7 +189,7 @@ BEGIN
 		WHERE review_id NOT IN ( 
 			-- if the same review_id corresponds to different order_ids it is not valid, so I exclude it
 			SELECT review_id 
-			FROM silver.order_reviews
+			FROM bronze.order_reviews
 			GROUP BY review_id
 			HAVING COUNT(DISTINCT order_id) > 1 
 		)
