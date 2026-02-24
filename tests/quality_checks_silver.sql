@@ -255,12 +255,13 @@ WHERE TRIM(review_id) != review_id OR
 	  TRIM(review_comment_title) != review_comment_title OR
 	  TRIM(review_comment_message) != review_comment_message
 
--- Check for NULLs or invalid review_id
+-- Check for NULLs or invalid or duplicate values in review_id
 -- Expectation: No Results
 SELECT
 	review_id
 FROM silver.order_reviews
-WHERE review_id IS NULL OR LEN(review_id) < 32
+GROUP BY review_id
+HAVING review_id IS NULL OR LEN(review_id) < 32 OR count(*) > 1
 
 -- Check for NULLs or invalid order_id
 -- Expectation: No Results
