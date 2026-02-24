@@ -69,8 +69,8 @@ BEGIN
 				WHEN geolocation_zip_code_prefix = '78557' AND silver.clean_names_fn(geolocation_city) != 'sinop' THEN NULL
 				ELSE geolocation_zip_code_prefix
 			END AS geolocation_zip_code_prefix,
-			geolocation_lat,
-			geolocation_lng,
+			AVG(geolocation_lat),
+			AVG(geolocation_lng),
 			silver.clean_names_fn(geolocation_city),
 			CASE
 				WHEN geolocation_zip_code_prefix IN ('02116', '04011') THEN 'SP'
@@ -79,6 +79,19 @@ BEGIN
 				ELSE geolocation_state
 			END AS geolocation_state
 		FROM bronze.geolocation
+		GROUP BY CASE 
+					 WHEN geolocation_zip_code_prefix = '72915' AND silver.clean_names_fn(geolocation_city) != 'aguas lindas de goias' THEN NULL
+					 WHEN geolocation_zip_code_prefix = '80630' AND silver.clean_names_fn(geolocation_city) != 'curitiba' THEN NULL
+					 WHEN geolocation_zip_code_prefix = '78557' AND silver.clean_names_fn(geolocation_city) != 'sinop' THEN NULL
+					 ELSE geolocation_zip_code_prefix
+				 END,
+				 silver.clean_names_fn(geolocation_city),
+				 CASE
+					 WHEN geolocation_zip_code_prefix IN ('02116', '04011') THEN 'SP'
+			       	 WHEN geolocation_zip_code_prefix IN ('21550', '23056') THEN 'RJ'
+				     WHEN geolocation_zip_code_prefix = '79750' THEN 'MS'
+				     ELSE geolocation_state
+			     END
         SET @end_time = GETDATE();
         PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
         PRINT '>> -------------';
