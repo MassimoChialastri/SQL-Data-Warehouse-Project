@@ -177,7 +177,7 @@ BEGIN
 			review_creation_date,
 			review_answer_timestamp
 		)
-		SELECT
+		SELECT 
 			review_id,
 			order_id,
 			review_score,
@@ -186,6 +186,13 @@ BEGIN
 			review_creation_date,
 			review_answer_timestamp
 		FROM bronze.order_reviews
+		WHERE review_id NOT IN ( 
+			-- if the same review_id corresponds to different order_ids it is not valid, so I exclude it
+			SELECT review_id 
+			FROM silver.order_reviews
+			GROUP BY review_id
+			HAVING COUNT(DISTINCT order_id) > 1 
+		)
 	    SET @end_time = GETDATE();
         PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
         PRINT '>> -------------';
