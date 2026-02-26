@@ -138,7 +138,8 @@ BEGIN
 			payment_type,
 			payment_installments,
 			payment_value,
-			tot_payment_value
+			payment_methods_number,
+			payment_tot_value
 		)
 		SELECT
 			order_id,
@@ -154,6 +155,7 @@ BEGIN
 			CASE WHEN payment_value <= 0 THEN NULL
 				 ELSE payment_value
 			END AS payment_value,
+			COUNT(*) OVER (PARTITION BY order_id) AS payment_methods_number,
 			CASE WHEN (SUM(CASE WHEN payment_value <= 0 THEN 1 ELSE 0 END) 
 					   OVER (PARTITION BY order_id)) > 0 THEN NULL
 				 ELSE SUM(payment_value) OVER (PARTITION BY order_id) 
