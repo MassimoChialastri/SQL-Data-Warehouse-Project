@@ -65,7 +65,8 @@ CREATE TABLE silver.order_payments (
 	payment_type nvarchar(50),
 	payment_installments tinyint,
 	payment_value float,
-	tot_payment_value float,
+	payment_methods_number tinyint,
+	payment_tot_value float,
 	dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
 GO
