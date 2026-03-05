@@ -110,7 +110,8 @@ BEGIN
 			price,
 			freight_value,
 			total_price,
-			total_freight_value
+			total_freight_value,
+			order_items_number
 		)
 		SELECT
 			order_id,
@@ -121,7 +122,8 @@ BEGIN
 			price,
 			freight_value,
 			SUM(price) OVER (PARTITION BY order_id),
-			SUM(freight_value) OVER (PARTITION BY order_id)
+			SUM(freight_value) OVER (PARTITION BY order_id),
+			COUNT(*) OVER (PARTITION BY order_id)
 		FROM bronze.order_items
         SET @end_time = GETDATE();
         PRINT '>> Load Duration: ' + CAST(DATEDIFF(SECOND, @start_time, @end_time) AS NVARCHAR) + ' seconds';
