@@ -51,6 +51,7 @@ CREATE TABLE silver.order_items (
 	freight_value float,
 	total_price float,
 	total_freight_value float,
+	order_items_number tinyint,
 	dwh_create_date DATETIME2 DEFAULT GETDATE()
 );
 GO
