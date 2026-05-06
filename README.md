@@ -13,7 +13,7 @@ The data architecture for this project follows the **Medallion Architecture** wi
 
 1. **Bronze Layer**: Stores raw data as-is from the source systems. Data is ingested from CSV files into the SQL Server database with no transformations applied.
 2. **Silver Layer**: Includes data cleansing, standardization, and normalization processes to prepare data for analysis.
-3. **Gold Layer**: Houses business-ready data modeled into a star schema optimized for reporting and analytics.
+3. **Gold Layer**: Houses business-ready data modeled into a galaxy star schema optimized for reporting and analytics.
 
 ---
 
@@ -23,7 +23,7 @@ This project involves:
 
 1. **Data Architecture**: Designing a Modern Data Warehouse using Medallion Architecture (**Bronze**, **Silver**, and **Gold** layers).
 2. **ETL Pipelines**: Extracting, transforming, and loading data from source systems into the warehouse.
-3. **Data Modeling**: Developing fact and dimension tables optimized for analytical queries (star schema).
+3. **Data Modeling**: Developing fact and dimension tables optimized for analytical queries (galaxy star schema).
 4. **Analytics & Reporting**: Creating SQL-based reports and dashboards for actionable insights.
 5. **Power BI Report**: Building an end-to-end interactive Power BI report connected to the Gold layer, delivering visual insights on customer behavior, product performance, and sales trends.
 
