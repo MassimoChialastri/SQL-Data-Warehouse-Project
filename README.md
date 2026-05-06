@@ -187,6 +187,8 @@ This project is licensed under the [MIT License](LICENSE). You are free to use, 
 
 **Massimo Chialastri**
 
+With a background in Mathematics (B.Sc.) and Statistical Sciences (M.Sc.), I've always been driven by curiosity about numbers and patterns. Today I channel that passion into my work as a Data Analyst & Data Engineer, where I design data pipelines, build warehouses, and extract insights that drive real decisions.
+
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MassimoChialastri)
 
 ---
