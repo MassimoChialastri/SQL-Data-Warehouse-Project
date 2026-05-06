@@ -43,7 +43,6 @@ This project involves:
 - **[SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads):** Lightweight server for hosting your SQL database.
 - **[SQL Server Management Studio (SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16):** GUI for managing and interacting with databases.
 - **[Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/):** Business intelligence tool used to build the final interactive report connected to the Gold layer.
-- **[Git Repository](https://github.com/):** Set up a GitHub account to manage, version, and collaborate on your code.
 - **[DrawIO](https://www.drawio.com/):** Design data architecture, models, flows, and diagrams.
 
 ---
